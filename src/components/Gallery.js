@@ -136,8 +136,9 @@ const GalleryWrapper = styled.div`
   flex-wrap: wrap;
   margin: 0rem auto;
   .item {
+    margin: 1rem auto;
     position: relative;
-    width: 50%;
+    width: 60%;
   }
   .info {
     text-transform: uppercase;

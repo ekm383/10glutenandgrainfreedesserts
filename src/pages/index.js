@@ -4,11 +4,12 @@ import Img from "gatsby-image"
 import Layout from "../components/layout"
 import Section from "../components/globals/section/Section"
 import styled from "styled-components"
-import Banner from "../components/globals/header/Banner"
 import SignUpForm from "../components/SignUpForm"
+import Banner from "../components/globals/header/Banner"
 import BackgroundImage from "gatsby-background-image"
 import Gallery from "../components/Gallery"
 import TableOfContents from "../components/TableOfContents"
+import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa"
 
 const Index = () => {
   const data = useStaticQuery(graphql`
@@ -17,6 +18,8 @@ const Index = () => {
         id
         title
         details
+        content
+        offer
         src {
           childImageSharp {
             fluid(quality: 90, maxWidth: 2000) {
@@ -42,7 +45,7 @@ const Index = () => {
       }
     }
   `)
-  const { title, details, src, testimonial } = data.promoItem
+  const { title, content, offer, details, src, testimonial } = data.promoItem
   return (
     <Layout>
       <Wrapper>
@@ -59,13 +62,11 @@ const Index = () => {
             fluid={src.childImageSharp.fluid}
           >
             <Banner title={title}>
-              <div className="details">
-                <ul>
-                  {details.map((value, id) => {
-                    return <li key={id}>{value}</li>
-                  })}
-                </ul>
-              </div>
+              <ul className="details">
+                {details.map((value, id) => {
+                  return <li key={id}>{value}</li>
+                })}
+              </ul>
             </Banner>
           </BackgroundImage>
         </Section>
@@ -73,6 +74,22 @@ const Index = () => {
           <div className="box form-container">
             <div className="summary-container">
               <Img fluid={data.rina.childImageSharp.fluid} />
+              <p
+                style={{
+                  fontWeight: "bold",
+                  fontSize: "1.2rem",
+                  margin: "2rem 0rem",
+                }}
+              >
+                Get your free Dessert eBook from my new cookbook Bushels and
+                Feasts, containing 10 irresistible, gluten and grain-free, real
+                food desserts!
+              </p>
+              <ul className="contentList">
+                {content.map((value, id) => {
+                  return <li key={id}>&#x2714; {value}</li>
+                })}
+              </ul>
             </div>
             <div className="summary-container">
               <div className="form ">
@@ -80,46 +97,58 @@ const Index = () => {
               </div>
             </div>
           </div>
+          <div className="box">
+            <ul className="contentList">
+              {offer.map((value, id) => {
+                return <li key={id}>{value}</li>
+              })}
+            </ul>
+          </div>
         </Section>
+        <Gallery />
         <Section style={{ width: "80vw", margin: "2rem auto 2rem auto" }}>
           <div className="content-intro">
-            <h1>BUSHELS AND FEASTS</h1>
+            <h1 style={{ color: "var(--mainColor)" }}>BUSHELS AND FEASTS</h1>
             <h3>
               170 FARM TO TABLE RECIPES FOR A GLUTEN AND GRAIN FREE LIFESTYLE
             </h3>
             <p>By Rina Thoma with Sarah Fragoso</p>
-            <p style={{ marginTop: "1rem" }}>
-              BUSHELS AND FEASTS is a collaboration between Le Cordon Bleu
-              trained chef Rina Thoma and international bestselling cookbook
-              author Sarah Fragoso. The result is a celebration of real food
-              inspired by California and French cuisine; beautiful, delicious,
-              market-fresh, family meals free from gluten and grains and filled
-              with healthy fats and decadent desserts.
-            </p>
           </div>
-        </Section>
-        <Section style={{ width: "80vw", margin: "4rem auto 2rem auto" }}>
-          <h3 style={{ marginBottom: "2rem" }}>A few of my favorites:</h3>
-          <Gallery />
-        </Section>
-        <Section style={{ width: "80vw", margin: "4rem auto 0rem auto" }}>
-          <TableOfContents />
+          <div className="testimonial-container">
+            <div className="testimonial-image">
+              <Img fluid={data.matt.childImageSharp.fluid} className="matt" />
+            </div>
+            <div className="testimonial-copy">
+              <p
+                style={{
+                  marginTop: "1rem",
+                  fontWeight: "bold",
+                  fontStyle: "italic",
+                }}
+              >
+                <FaQuoteLeft /> BUSHELS AND FEASTS is a collaboration between Le
+                Cordon Bleu trained chef Rina Thoma and international
+                bestselling cookbook author Sarah Fragoso. The result is a
+                celebration of real food inspired by California and French
+                cuisine; beautiful, delicious, market-fresh, family meals free
+                from gluten and grains and filled with healthy fats and decadent
+                desserts. <FaQuoteRight />
+              </p>
+              <p
+                style={{
+                  marginTop: "1rem",
+                  fontWeight: "bold",
+                  fontStyle: "italic",
+                }}
+              >
+                <strong>Matt Raso, Famed Nobu executive chef</strong>
+              </p>
+            </div>
+          </div>
         </Section>
         <Section style={{ margin: "0rem auto 4rem auto" }}>
           <div className="form ">
             <SignUpForm />
-          </div>
-        </Section>
-        <Section style={{ width: "80vw", margin: "2rem auto 2rem auto" }}>
-          <div className="testimonial">
-            <div className="testimonial-copy">
-              <h4>Testimonial:</h4>
-              <ul className="contentList">
-                {testimonial.map((value, id) => {
-                  return <li key={id}>{value}</li>
-                })}
-              </ul>
-            </div>
           </div>
         </Section>
       </Wrapper>
@@ -149,42 +178,28 @@ const Wrapper = styled.div`
   }
   .details {
     background: var(--mainColor);
-    width: 80%;
+    width: 60%;
     margin: 0rem auto;
-    padding: 1rem;
+    padding: 0.3rem 0.5rem 0.5rem 0.5rem;
+    font-weight: bold;
     border-radius: 2px;
-    font-size: 0.9rem;
-    ul {
-      list-style-type: none;
+    li {
+      margin: 0.5rem;
+      display: inline;
     }
   }
-  .testimonial {
-    ul {
-      li {
-        margin: 1rem 0rem;
-      }
-    }
+  h3 {
+    color: var(--mainColor);
   }
   h4 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
   }
-  button {
-    background: var(--mainColor);
-    border: none;
-    border-radius: 5px;
-    padding: 1rem 2rem;
-    font-size: 1.5rem;
-    color: #ffffff;
-    &:hover {
-      cursor: pointer;
-    }
-  }
-  .content-intro {
-    h1,
-    h3 {
-      color: var(--mainColor);
-    }
+  .cta {
+    font-style: italic;
+    font-weight: bold;
+    color: var(--mainColor);
+    margin-top: 0.5rem;
   }
   .contentList {
     margin-top: 1rem;
@@ -208,6 +223,22 @@ const Wrapper = styled.div`
         list-style-type: none;
       }
     }
+  }
+  .testimonial-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 2rem 0rem;
+    .testimonial-image {
+      flex: 1;
+      margin-right: 1rem;
+    }
+    .testimonial-copy {
+      flex: 3;
+    }
+  }
+  svg {
+    color: var(--mainColor);
   }
 
   @media (max-width: 768px) {

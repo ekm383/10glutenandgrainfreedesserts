@@ -2,12 +2,21 @@
   {
     "id": "1",
     "free": "no",
-    "title": "10 Gluten and Grain Free Desserts",
+    "title": "FREE DESSERT EBOOK",
     "src": "../images/la-dolce-rina-hero.jpg",
     "gallery": "../images/cookbook/",
     "details": [
       "Delicious, honest, real food desserts that celebrate each and every ingredient"
     ],
+    "content": [
+      "Gluten Free",
+      "Grain Free",
+      "Refined Sugar Free",
+      "Paleo-friendly",
+      "Keto-friendly",
+      "Low Carb"
+    ],
+    "offer": ["10 Bushels and Feasts Dessert Recipes"],
     "testimonial": [
       " \"BUSHELS AND FEASTS is a collaboration between Le Cordon Bleu trained chef Rina Thoma and international bestselling cookbook author Sarah Fragoso. The result is a celebration of real food inspired by California and French cuisine; beautiful, delicious, market-fresh, family meals free from gluten and grains and filled with healthy fats and decadent desserts.\" ",
       "-Famed Nobu executive chef, Matt Raso"

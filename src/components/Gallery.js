@@ -86,7 +86,7 @@ const Gallery = () => {
       </div>
       <div className="item item-2">
         <Img fluid={data.img2.childImageSharp.fluid} />
-        <p className="info">SALTED CARAMEL DARK CHOCOLATE MOUSE</p>
+        <p className="info">SALTED CARAMEL DARK CHOCOLATE MOUSSE</p>
       </div>
       <div className="item item-3">
         <Img fluid={data.img3.childImageSharp.fluid} />
@@ -118,7 +118,7 @@ const Gallery = () => {
       </div>
       <div className="item item-9">
         <Img fluid={data.img9.childImageSharp.fluid} />
-        <p className="info">BROWN BUTTER PISTACHIO AND LEMON FINANCIARS</p>
+        <p className="info">BROWN BUTTER PISTACHIO AND LEMON FINANCIERS</p>
       </div>
       <div className="item item-10">
         <Img fluid={data.img10.childImageSharp.fluid} />

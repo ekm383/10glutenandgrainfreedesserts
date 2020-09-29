@@ -8,7 +8,6 @@ import SignUpForm from "../components/SignUpForm"
 import Banner from "../components/globals/header/Banner"
 import BackgroundImage from "gatsby-background-image"
 import Gallery from "../components/Gallery"
-import TableOfContents from "../components/TableOfContents"
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa"
 
 const Index = () => {

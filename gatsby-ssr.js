@@ -1,16 +1,13 @@
-import React from "react"
-export const onRenderBody = ({ setHeadComponents }) => {
-  setHeadComponents([
-    <script id="mcjs">
-      !function(c,h,i,m,p)
-      {
-        ((m = c.createElement(h)),
-        (p = c.getElementsByTagName(h)[0]),
-        (m.async = 1),
-        (m.src = i),
-        p.parentNode.insertBefore(m, p))
-      }
-      (document,"script","https://chimpstatic.com/mcjs-connected/js/users/20bb22ff7fdb4f70b68522c88/dd1f35af4890c63fda8645cf6.js");
-    </script>,
+const React = require("react")
+
+exports.onRenderBody = ({ setPostBodyComponents }) => {
+  setPostBodyComponents([
+    <script
+      id="mcjs"
+      type="text/javascript"
+      dangerouslySetInnerHTML={{
+        __html: `!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/20bb22ff7fdb4f70b68522c88/dd1f35af4890c63fda8645cf6.js");`,
+      }}
+    />, //Injecting SalesIq Script on body of the page
   ])
 }
